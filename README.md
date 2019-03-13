@@ -85,4 +85,4 @@ experiment_init directory contains 2 files.
 --> contains the config details like target resolution, image dimensions, data path where the dataset is stored and path to save the trained models
 
 2) data_cfg_acdc.py 
---> contains an example of data config details where one can set the patient ids which they want to use as train, val and test images.
+--> contains an example of data config details where one can set the patient ids which they want to use as train, validation and test images.
