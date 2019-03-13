@@ -13,24 +13,28 @@ Python 3.6.0
 Tensorflow 1.8.0
 rest of the requirements are mentioned in the "requirements.txt" file
 
-I)  To clone the git repository
-git clone 
+I)  To clone the git repository.
+
+git clone https://github.com/krishnabits001/task_driven_data_augmentation.git
 
 
-II) Install python, required packages and tensorflow
+II) Install python, required packages and tensorflow.
+
 Then, install python packages required using below command or the packages mentioned in the file.
 pip install -r requirements.txt
 
 To install tensorflow
 pip install tensorflow-gpu=1.8.0
 
-III) dataset download
+III) dataset download.
+
 To download the acdc, check the below website.
 https://www.creatis.insa-lyon.fr/Challenge/acdc
 All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For other details refer to the paper.
 
-IV) Train the models
-One can train the models stepwise (check "train/train_script.sh" script for commands)
+IV) Train the models.
+
+One can train the models stepwise (check "train/train_script.sh" script for commands, also stated below)
 
 Steps :
 1) To train the deformation field generator cGAN to generate the deformation fields
@@ -49,7 +53,8 @@ To train the baseline with affine transformations for comparison, use the below 
 cd train_model/ 
 python --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0
 
-V) Config files contents
+V) Config files contents.
+
 One can modify the contents of the below 2 config files to run the required experiments.
 experiment_init directory contains 2 files.
 1) init_acdc.py 
