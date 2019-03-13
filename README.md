@@ -4,14 +4,11 @@ The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" 
 The method yields competitive segmentation performance with just 1 labelled training volume.
 
 Authors:
-
 Krishna Chaitanya (email : krishna.chaitanya@vision.ee.ethz.ch),
-
 Christian F. Baumgartner,
 Neerav Karani.
 
 Requirements :
-
 Python 3.6.0
 Tensorflow 1.8.0
 rest of the requirements are mentioned in the "requirements.txt" file
@@ -40,19 +37,23 @@ IV) Train the models.
 One can train the models stepwise (check "train/train_script.sh" script for commands, also stated below)
 
 Steps :
-1) To train the deformation field generator cGAN to generate the deformation fields
+1) To train the deformation field generator cGAN to generate the deformation fields.
+
 cd train_model/ 
 python tr_deformation_cgan_and_unet.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_g=0.001 
 
-2) To train the additive intensity field generator cGAN to generate the intensity fields
+2) To train the additive intensity field generator cGAN to generate the intensity fields.
+
 cd train_model/ 
 python tr_intensity_cgan_and_unet.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_i=0.001 
 
-3) To use both the trained cGANs to generate augmented images and train the unet
+3) To use both the trained cGANs to generate augmented images and train the unet.
+
 cd train_model/ 
 python tr_unet_with_deformation_intensity_cgans_augmentations.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --data_aug_seg=1 --ra_en=0 --gan_type=gan --lamda_l1_g=0.001 --lamda_l1_i=0.001 --ver=0 --dsc_loss=0 
 
-To train the baseline with affine transformations for comparison, use the below code file:
+To train the baseline with affine transformations for comparison, use the below code file.
+
 cd train_model/ 
 python --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0
 
