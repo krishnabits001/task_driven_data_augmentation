@@ -4,11 +4,14 @@ The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" 
 The method yields competitive segmentation performance with just 1 labelled training volume.
 
 Authors:
+
 Krishna Chaitanya (email : krishna.chaitanya@vision.ee.ethz.ch),
+
 Christian F. Baumgartner,
 Neerav Karani.
 
-Requirements 
+Requirements :
+
 Python 3.6.0
 Tensorflow 1.8.0
 rest of the requirements are mentioned in the "requirements.txt" file
@@ -26,7 +29,7 @@ pip install -r requirements.txt
 To install tensorflow
 pip install tensorflow-gpu=1.8.0
 
-III) dataset download.
+III) Dataset download.
 
 To download the acdc, check the below website.
 https://www.creatis.insa-lyon.fr/Challenge/acdc
