@@ -21,7 +21,7 @@ class f1_utilsObj:
         self.batch_size=cfg.batch_size
         self.num_classes=cfg.num_classes
         self.num_channels=cfg.num_channels
-        self.method_val = cfg.method_val
+        self.interp_val = cfg.interp_val
         self.target_resolution=cfg.target_resolution
         self.data_path_tr=cfg.data_path_tr
         self.dt=dt

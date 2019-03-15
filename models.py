@@ -15,7 +15,7 @@ class modelObj:
         self.img_size_x=cfg.img_size_x
         self.img_size_y=cfg.img_size_y
         self.num_classes=cfg.num_classes
-        self.method_val = cfg.method_val
+        self.interp_val = cfg.interp_val
         self.img_size_flat=cfg.img_size_flat
         self.batch_size=cfg.batch_size
 
@@ -110,28 +110,28 @@ class modelObj:
         #Upsample + 2x2 conv to half the no. of feature channels + SKIP connection (concate the conv. layers)
         # Level 5 - 1 upsampling layer + 1 conv op. + skip connection + 2x conv op.
         scale_val=2
-        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.method_val, scale_factor=scale_val)
+        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc5 = layers.conv2d_layer(ip_layer=dec_up5,name='dec_dc5', kernel_size=(fs_de,fs_de),num_filters=no_filters[4], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c5 = tf.concat((dec_dc5,enc_c4_b),axis=3,name='dec_cat_c5')
         dec_c4_a = layers.conv2d_layer(ip_layer=dec_cat_c5,name='dec_c4_a', num_filters=no_filters[4], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c4_b = layers.conv2d_layer(ip_layer=dec_c4_a,name='dec_c4_b', num_filters=no_filters[4], use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 4
-        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.method_val, scale_factor=scale_val)
+        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc4 = layers.conv2d_layer(ip_layer=dec_up4,name='dec_dc4', kernel_size=(fs_de,fs_de),num_filters=no_filters[3], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c4 = tf.concat((dec_dc4,enc_c3_b),axis=3,name='dec_cat_c4')
         dec_c3_a = layers.conv2d_layer(ip_layer=dec_cat_c4,name='dec_c3_a', num_filters=no_filters[3], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c3_b = layers.conv2d_layer(ip_layer=dec_c3_a,name='dec_c3_b', num_filters=no_filters[3], use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 3
-        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.method_val, scale_factor=scale_val)
+        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc3 = layers.conv2d_layer(ip_layer=dec_up3,name='dec_dc3', kernel_size=(fs_de,fs_de),num_filters=no_filters[2],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c3 = tf.concat((dec_dc3,enc_c2_b),axis=3,name='dec_cat_c3')
         dec_c2_a = layers.conv2d_layer(ip_layer=dec_cat_c3,name='dec_c2_a', num_filters=no_filters[2], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c2_b = layers.conv2d_layer(ip_layer=dec_c2_a,name='dec_c2_b', num_filters=no_filters[2], use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 2
-        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.method_val, scale_factor=scale_val)
+        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc2 = layers.conv2d_layer(ip_layer=dec_up2,name='dec_dc2', kernel_size=(fs_de,fs_de),num_filters=no_filters[1], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c2 = tf.concat((dec_dc2,enc_c1_b),axis=3,name='dec_cat_c2')
         dec_c1_a = layers.conv2d_layer(ip_layer=dec_cat_c2,name='dec_c1_a', num_filters=no_filters[1], use_relu=True, use_batch_norm=True, training_phase=train_phase)
@@ -374,23 +374,23 @@ class modelObj:
         # Level 5 - Upsampling layer + Conv. layer
         fs_de=2
         scale_val=2
-        gen_up5 = layers.upsample_layer(ip_layer=gen_fcn_reshaped, method=self.method_val, scale_factor=scale_val)
+        gen_up5 = layers.upsample_layer(ip_layer=gen_fcn_reshaped, method=self.interp_val, scale_factor=scale_val)
         gen_c5 = layers.conv2d_layer(ip_layer=gen_up5,name='gen_c5', kernel_size=(fs_de,fs_de),num_filters=no_filters[4],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 4
-        gen_up4 = layers.upsample_layer(ip_layer=gen_c5, method=self.method_val, scale_factor=scale_val)
+        gen_up4 = layers.upsample_layer(ip_layer=gen_c5, method=self.interp_val, scale_factor=scale_val)
         gen_c4 = layers.conv2d_layer(ip_layer=gen_up4,name='gen_c4', kernel_size=(fs_de,fs_de),num_filters=no_filters[3],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 3
-        gen_up3 = layers.upsample_layer(ip_layer=gen_c4, method=self.method_val, scale_factor=scale_val)
+        gen_up3 = layers.upsample_layer(ip_layer=gen_c4, method=self.interp_val, scale_factor=scale_val)
         gen_c3 = layers.conv2d_layer(ip_layer=gen_up3,name='gen_c3', kernel_size=(fs_de,fs_de),num_filters=no_filters[2],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 2
-        gen_up2 = layers.upsample_layer(ip_layer=gen_c3, method=self.method_val, scale_factor=scale_val)
+        gen_up2 = layers.upsample_layer(ip_layer=gen_c3, method=self.interp_val, scale_factor=scale_val)
         gen_c2 = layers.conv2d_layer(ip_layer=gen_up2,name='gen_c2', kernel_size=(fs_de,fs_de),num_filters=no_filters[1],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 1
-        gen_up1 = layers.upsample_layer(ip_layer=gen_c2, method=self.method_val, scale_factor=scale_val)
+        gen_up1 = layers.upsample_layer(ip_layer=gen_c2, method=self.interp_val, scale_factor=scale_val)
         gen_c1 = layers.conv2d_layer(ip_layer=gen_up1,name='gen_c1', kernel_size=(fs_de,fs_de),num_filters=no_filters[1],use_relu=False, use_batch_norm=False, training_phase=train_phase)
 
         # Conv. ops on input image
@@ -509,28 +509,28 @@ class modelObj:
         # Upsample + 2x2 conv to half the no. of feature channels + SKIP connection (concate the conv. layers)
         # Level 5 - 1 upsampling layer + 1 conv op. + skip connection + 2x conv op.
         scale_val=2
-        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.method_val, scale_factor=scale_val)
+        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc5 = layers.conv2d_layer(ip_layer=dec_up5,name='dec_dc5', kernel_size=(fs_de,fs_de),num_filters=no_filters[4],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c5 = tf.concat((dec_dc5,enc_c4_b),axis=3,name='dec_cat_c5')
 
         #Level 4
         dec_c4_a = layers.conv2d_layer(ip_layer=dec_cat_c5,name='dec_c4_a', num_filters=no_filters[4], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c4_b = layers.conv2d_layer(ip_layer=dec_c4_a,name='dec_c4_b', num_filters=no_filters[4], use_relu=True, use_batch_norm=True, training_phase=train_phase)
-        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.method_val, scale_factor=scale_val)
+        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc4 = layers.conv2d_layer(ip_layer=dec_up4,name='dec_dc4', kernel_size=(fs_de,fs_de),num_filters=no_filters[3],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c4 = tf.concat((dec_dc4,enc_c3_b),axis=3,name='dec_cat_c4')
 
         #Level 3
         dec_c3_a = layers.conv2d_layer(ip_layer=dec_cat_c4,name='dec_c3_a', num_filters=no_filters[3], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c3_b = layers.conv2d_layer(ip_layer=dec_c3_a,name='dec_c3_b', num_filters=no_filters[3], use_relu=True, use_batch_norm=True, training_phase=train_phase)
-        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.method_val, scale_factor=scale_val)
+        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc3 = layers.conv2d_layer(ip_layer=dec_up3,name='dec_dc3', kernel_size=(fs_de,fs_de),num_filters=no_filters[2],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c3 = tf.concat((dec_dc3,enc_c2_b),axis=3,name='dec_cat_c3')
 
         #Level 2
         dec_c2_a = layers.conv2d_layer(ip_layer=dec_cat_c3,name='dec_c2_a', num_filters=no_filters[2], use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c2_b = layers.conv2d_layer(ip_layer=dec_c2_a,name='dec_c2_b', num_filters=no_filters[2], use_relu=True, use_batch_norm=True, training_phase=train_phase)
-        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.method_val, scale_factor=scale_val)
+        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc2 = layers.conv2d_layer(ip_layer=dec_up2,name='dec_dc2', kernel_size=(fs_de,fs_de),num_filters=no_filters[1],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_cat_c2 = tf.concat((dec_dc2,enc_c1_b),axis=3,name='dec_cat_c2')
 
@@ -687,23 +687,23 @@ class modelObj:
         # Level 5 - Upsample + Conv. op
         fs_de=2
         scale_val=2
-        gen_up5 = layers.upsample_layer(ip_layer=gen_fcn_reshaped, method=self.method_val, scale_factor=scale_val)
+        gen_up5 = layers.upsample_layer(ip_layer=gen_fcn_reshaped, method=self.interp_val, scale_factor=scale_val)
         gen_c5 = layers.conv2d_layer(ip_layer=gen_up5,name='gen_c5', kernel_size=(fs_de,fs_de),num_filters=no_filters[4],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 4
-        gen_up4 = layers.upsample_layer(ip_layer=gen_c5, method=self.method_val, scale_factor=scale_val)
+        gen_up4 = layers.upsample_layer(ip_layer=gen_c5, method=self.interp_val, scale_factor=scale_val)
         gen_c4 = layers.conv2d_layer(ip_layer=gen_up4,name='gen_c4', kernel_size=(fs_de,fs_de),num_filters=no_filters[3],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 3
-        gen_up3 = layers.upsample_layer(ip_layer=gen_c4, method=self.method_val, scale_factor=scale_val)
+        gen_up3 = layers.upsample_layer(ip_layer=gen_c4, method=self.interp_val, scale_factor=scale_val)
         gen_c3 = layers.conv2d_layer(ip_layer=gen_up3,name='gen_c3', kernel_size=(fs_de,fs_de),num_filters=no_filters[2],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 2
-        gen_up2 = layers.upsample_layer(ip_layer=gen_c3, method=self.method_val, scale_factor=scale_val)
+        gen_up2 = layers.upsample_layer(ip_layer=gen_c3, method=self.interp_val, scale_factor=scale_val)
         gen_c2 = layers.conv2d_layer(ip_layer=gen_up2,name='gen_c2', kernel_size=(fs_de,fs_de),num_filters=no_filters[1],use_relu=True, use_batch_norm=True, training_phase=train_phase)
 
         # Level 1
-        gen_up1 = layers.upsample_layer(ip_layer=gen_c2, method=self.method_val, scale_factor=scale_val)
+        gen_up1 = layers.upsample_layer(ip_layer=gen_c2, method=self.interp_val, scale_factor=scale_val)
         gen_c1 = layers.conv2d_layer(ip_layer=gen_up1,name='gen_c1', kernel_size=(fs_de,fs_de),num_filters=no_filters[1],use_relu=False, use_batch_norm=False, training_phase=train_phase)
 
 
@@ -825,28 +825,28 @@ class modelObj:
         # Upsample + 2x2 conv to half the no. of feature channels + SKIP connection (concate the conv. layers)
         # Level 5 - 1 upsampling layer + 1 conv op. + skip connection + 2x conv op.
         scale_val = 2
-        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.method_val, scale_factor=scale_val)
+        dec_up5 = layers.upsample_layer(ip_layer=enc_c5_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc5 = layers.conv2d_layer(ip_layer=dec_up5, name='dec_dc5', kernel_size=(fs_de, fs_de),num_filters=no_filters[4], use_relu=True, use_batch_norm=True,training_phase=train_phase)
         dec_cat_c5 = tf.concat((dec_dc5, enc_c4_b), axis=3, name='dec_cat_c5')
 
         # Level 4
         dec_c4_a = layers.conv2d_layer(ip_layer=dec_cat_c5, name='dec_c4_a', num_filters=no_filters[4],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c4_b = layers.conv2d_layer(ip_layer=dec_c4_a, name='dec_c4_b', num_filters=no_filters[4], use_relu=True,use_batch_norm=True, training_phase=train_phase)
-        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.method_val, scale_factor=scale_val)
+        dec_up4 = layers.upsample_layer(ip_layer=dec_c4_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc4 = layers.conv2d_layer(ip_layer=dec_up4, name='dec_dc4', kernel_size=(fs_de, fs_de),num_filters=no_filters[3], use_relu=True, use_batch_norm=True,training_phase=train_phase)
         dec_cat_c4 = tf.concat((dec_dc4, enc_c3_b), axis=3, name='dec_cat_c4')
 
         # Level 3 -
         dec_c3_a = layers.conv2d_layer(ip_layer=dec_cat_c4, name='dec_c3_a', num_filters=no_filters[3],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c3_b = layers.conv2d_layer(ip_layer=dec_c3_a, name='dec_c3_b', num_filters=no_filters[3], use_relu=True,use_batch_norm=True, training_phase=train_phase)
-        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.method_val, scale_factor=scale_val)
+        dec_up3 = layers.upsample_layer(ip_layer=dec_c3_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc3 = layers.conv2d_layer(ip_layer=dec_up3, name='dec_dc3', kernel_size=(fs_de, fs_de),num_filters=no_filters[2], use_relu=True, use_batch_norm=True,training_phase=train_phase)
         dec_cat_c3 = tf.concat((dec_dc3, enc_c2_b), axis=3, name='dec_cat_c3')
 
         # Level 2 -
         dec_c2_a = layers.conv2d_layer(ip_layer=dec_cat_c3, name='dec_c2_a', num_filters=no_filters[2],use_relu=True, use_batch_norm=True, training_phase=train_phase)
         dec_c2_b = layers.conv2d_layer(ip_layer=dec_c2_a, name='dec_c2_b', num_filters=no_filters[2], use_relu=True,use_batch_norm=True, training_phase=train_phase)
-        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.method_val, scale_factor=scale_val)
+        dec_up2 = layers.upsample_layer(ip_layer=dec_c2_b, method=self.interp_val, scale_factor=scale_val)
         dec_dc2 = layers.conv2d_layer(ip_layer=dec_up2, name='dec_dc2', kernel_size=(fs_de, fs_de),num_filters=no_filters[1], use_relu=True, use_batch_norm=True,training_phase=train_phase)
         dec_cat_c2 = tf.concat((dec_dc2, enc_c1_b), axis=3, name='dec_cat_c2')
 
