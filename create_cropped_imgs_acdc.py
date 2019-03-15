@@ -1,6 +1,6 @@
 '''
 This script is to preprocess all the data into the chosen resolution and fixed dimensions specified in the init_acdc.py config file.
-This re-sampled (to target resolution) and cropped image,label pairs are stored in npy files and are later used directly while the training of the network.
+This re-sampled (to target resolution) and cropped/zero-padded image,label pairs are stored in npy files and are later used directly while the training of the network.
 '''
 import numpy as np
 import pathlib
