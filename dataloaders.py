@@ -14,7 +14,6 @@ class dataloaderObj:
         #print('dataloaders init')
         self.data_path_tr=cfg.data_path_tr
         self.data_path_tr_cropped=cfg.data_path_tr_cropped
-        #self.slic_path_tr_cropped=cfg.slic_path_tr_cropped
         self.target_resolution=cfg.target_resolution
         self.size=cfg.size
         self.num_classes=cfg.num_classes
