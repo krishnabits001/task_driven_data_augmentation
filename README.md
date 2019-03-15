@@ -1,6 +1,6 @@
 **Semi-Supervised and Task-Driven Data Augmentation** <br/>
 
-The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" which got accepted as an ORAL presentation at IPMI 2019 (26th international conference on Information Processing in Medical Imaging).
+The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" which got accepted as an oral presentation at IPMI 2019 (26th international conference on Information Processing in Medical Imaging).
 The method yields competitive segmentation performance with just 1 labelled training volume.<br/>
 https://arxiv.org/abs/1902.05396
 
@@ -30,13 +30,13 @@ https://www.creatis.insa-lyon.fr/Challenge/acdc. <br/>
 All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For more details refer to the paper.<br/>
 
 IV) Train the models.<br/>
-One can train the models stepwise (check "train/train_script.sh" script for commands, also stated below)<br/>
+The models need to be trained sequentially as follows (check "train/train_script.sh" script for commands)<br/>
 Steps :<br/>
-1) To train the deformation field generator cGAN to generate the deformation fields.<br/>
+1) To train the deformation field cGAN to generate the deformation fields.<br/>
 cd train_model/ <br/>
 python tr_deformation_cgan_and_unet.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_g=0.001 <br/>
 
-2) To train the additive intensity field generator cGAN to generate the intensity fields.<br/>
+2) To train the additive intensity field cGAN to generate the intensity fields.<br/>
 cd train_model/ <br/>
 python tr_intensity_cgan_and_unet.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_i=0.001 <br/>
 
