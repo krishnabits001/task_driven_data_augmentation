@@ -4,7 +4,7 @@ The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" 
 The method yields competitive segmentation performance with just 1 labelled training volume.<br/>
 https://arxiv.org/abs/1902.05396
 
-Authors:
+Authors:<br/>
 Krishna Chaitanya (email : krishna.chaitanya@vision.ee.ethz.ch),<br/>
 Christian F. Baumgartner,<br/>
 Neerav Karani.<br/>
@@ -30,12 +30,10 @@ pip install tensorflow-gpu=1.8.0
 III) Dataset download.<br/>
 To download the acdc, check the website :<br/>
 https://www.creatis.insa-lyon.fr/Challenge/acdc. <br/>
-All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For more details refer to the paper.
-
+All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For more details refer to the paper.<br/>
 
 IV) Train the models.<br/>
 One can train the models stepwise (check "train/train_script.sh" script for commands, also stated below)<br/>
-
 Steps :<br/>
 1) To train the deformation field generator cGAN to generate the deformation fields.<br/>
 cd train_model/ <br/>
@@ -53,13 +51,12 @@ To train the baseline with affine transformations for comparison, use the below 
 cd train_model/ <br/>
 python --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0 <br/>
 
-
 V) Config files contents.<br/>
 One can modify the contents of the below 2 config files to run the required experiments.<br/>
 experiment_init directory contains 2 files.<br/>
 
 1) init_acdc.py <br/>
---> contains the config details like target resolution, image dimensions, data path where the dataset is stored and path to save the trained models
+--> contains the config details like target resolution, image dimensions, data path where the dataset is stored and path to save the trained models.<br/>
 
 2) data_cfg_acdc.py <br/>
---> contains an example of data config details where one can set the patient ids which they want to use as train, validation and test images.
+--> contains an example of data config details where one can set the patient ids which they want to use as train, validation and test images.<br/>
