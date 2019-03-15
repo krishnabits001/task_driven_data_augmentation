@@ -1,15 +1,15 @@
-#Semi-Supervised and Task-Driven Data Augmentation <br/>
+**Semi-Supervised and Task-Driven Data Augmentation** <br/>
 
 The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" which got accepted as an ORAL presentation at IPMI 2019 (26th international conference on Information Processing in Medical Imaging).
 The method yields competitive segmentation performance with just 1 labelled training volume.<br/>
 https://arxiv.org/abs/1902.05396
 
-Authors:<br/>
+**Authors:** <br/>
 Krishna Chaitanya ([email](mailto:krishna.chaitanya@vision.ee.ethz.ch)),<br/>
 Christian F. Baumgartner,<br/>
 Neerav Karani.<br/>
 
-Requirements :<br/>
+**Requirements:** <br/>
 Python 3.6.0,<br/>
 Tensorflow 1.8.0,<br/>
 rest of the requirements are mentioned in the "requirements.txt" file. <br/>
