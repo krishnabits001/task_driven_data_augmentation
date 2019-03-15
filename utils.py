@@ -302,10 +302,8 @@ def get_max_chkpt_file(model_path,min_ep=10):
                 numbers = re.findall('\d+',filename)
                 if "_v2" in filename:
                     tmp_ep_no=int(numbers[1])
-                    print('11')
                 else:
                     tmp_ep_no=int(numbers[0])
-                    print('12')
                 if(tmp_ep_no>min_ep):
                     chkpt_max=os.path.join(dirName,filename)
                     min_ep=tmp_ep_no
