@@ -12,10 +12,12 @@ class lossObj:
         '''
         Calculate a dice loss defined as `1-foreround_dice`. Default mode assumes that the 0 label
          denotes background and the remaining labels are foreground.
-        :param logits: Network output before softmax
-        :param labels: ground truth label masks
-        :param epsilon: A small constant to avoid division by 0
-        :return: Dice loss
+        input params:
+            logits: Network output before softmax
+            labels: ground truth label masks
+            epsilon: A small constant to avoid division by 0
+        returns:
+            loss: Dice loss with background
         '''
 
         with tf.name_scope('dice_loss'):
@@ -37,12 +39,14 @@ class lossObj:
         '''
         Calculate a dice loss defined as `1-foreround_dice`. Default mode assumes that the 0 label
          denotes background and the remaining labels are foreground.
-        :param logits: Network output before softmax
-        :param labels: ground truth label masks
-        :param epsilon: A small constant to avoid division by 0
-        :param from_label: First label to evaluate
-        :param to_label: Last label to evaluate
-        :return: Dice loss
+        input params:
+            logits: Network output before softmax
+            labels: ground truth label masks
+            epsilon: A small constant to avoid division by 0
+            from_label: First label to evaluate
+            to_label: Last label to evaluate
+        returns:
+            loss: Dice loss without background
         '''
 
         with tf.name_scope('dice_loss'):
@@ -68,13 +72,15 @@ class lossObj:
         loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(logits=logits, labels=labels))
         return loss
 
-    def pixel_wise_cross_entropy_loss_weighted_nn(self, logits, labels, class_weights):
+    def pixel_wise_cross_entropy_loss_weighted(self, logits, labels, class_weights):
         '''
         Weighted cross entropy loss, with a weight per class
-        :param logits: Network output before softmax
-        :param labels: Ground truth masks
-        :param class_weights: A list of the weights for each class
-        :return: weighted cross entropy loss
+        input params:
+            logits: Network output before softmax
+            labels: Ground truth masks
+            class_weights: A list of the weights for each class
+        returns:
+            loss:  weighted cross entropy loss
         '''
 
         # deduce weights for batch samples based on their true label

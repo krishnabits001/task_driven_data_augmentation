@@ -158,7 +158,7 @@ class modelObj:
             #seg_cost = dice_loss_with_backgrnd(logits=seg_fin_layer, labels=y_l_onehot)
         else:
             # For Weighted Cross Entropy loss function with background
-            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted_nn(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
+            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
 
         # var list of u-net (segmentation net)
         seg_net_vars = []
@@ -558,7 +558,7 @@ class modelObj:
             #seg_cost = dice_loss_with_backgrnd(logits=seg_fin_layer, labels=y_l_onehot)
         else:
             # For Weighted CE loss function
-            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted_nn(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
+            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
             seg_cost_wgtce = seg_cost
 
         # get the var list for Segmentation Network
@@ -874,7 +874,7 @@ class modelObj:
             #seg_cost = dice_loss_with_backgrnd(logits=seg_fin_layer, labels=y_l_onehot)
         else:
             # For Weighted CE loss function
-            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted_nn(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
+            seg_cost = loss.pixel_wise_cross_entropy_loss_weighted(logits=seg_fin_layer, labels=y_l_onehot, class_weights=class_weights)
             seg_cost_wgtce=seg_cost
 
         # get the var list for Segmentation Network

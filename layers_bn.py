@@ -177,10 +177,12 @@ class layersObj:
     def batch_norm_layer(self,ip_layer, name, training, moving_average_decay=0.99, epsilon=1e-3):
         '''
         Batch normalisation layer (Adapted from https://github.com/tensorflow/tensorflow/issues/1122)
-        :param ip_layer: Input layer (should be before activation)
-        :param name: A name for the computational graph
-        :param training: A tf.bool specifying if the layer is executed at training or testing time
-        :return: Batch normalised activation
+        input params:
+            ip_layer: Input layer (should be before activation)
+            name:     A name for the computational graph
+            training: A tf.bool specifying if the layer is executed at training or testing time
+        returns:
+            normalized: Batch normalised activation
         '''
 
         with tf.variable_scope(name):
