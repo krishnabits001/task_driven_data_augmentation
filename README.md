@@ -12,20 +12,17 @@ Neerav Karani.<br/>
 Requirements :<br/>
 Python 3.6.0,<br/>
 Tensorflow 1.8.0,<br/>
-rest of the requirements are mentioned in the "requirements.txt" file.
-
+rest of the requirements are mentioned in the "requirements.txt" file. <br/>
 
 I)  To clone the git repository.<br/>
-git clone https://github.com/krishnabits001/task_driven_data_augmentation.git
-
+git clone https://github.com/krishnabits001/task_driven_data_augmentation.git <br/>
 
 II) Install python, required packages and tensorflow.<br/>
 Then, install python packages required using below command or the packages mentioned in the file.<br/>
-pip install -r requirements.txt
+pip install -r requirements.txt <br/>
 
-To install tensorflow<br/>
-pip install tensorflow-gpu=1.8.0
-
+To install tensorflow <br/>
+pip install tensorflow-gpu=1.8.0 <br/>
 
 III) Dataset download.<br/>
 To download the acdc, check the website :<br/>
@@ -54,9 +51,7 @@ python tr_unet_baseline.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 
 V) Config files contents.<br/>
 One can modify the contents of the below 2 config files to run the required experiments.<br/>
 experiment_init directory contains 2 files.<br/>
-
 1) init_acdc.py <br/>
 --> contains the config details like target resolution, image dimensions, data path where the dataset is stored and path to save the trained models.<br/>
-
 2) data_cfg_acdc.py <br/>
 --> contains an example of data config details where one can set the patient ids which they want to use as train, validation and test images.<br/>
