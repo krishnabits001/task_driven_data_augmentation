@@ -34,19 +34,19 @@ One can train the models stepwise (check "train/train_script.sh" script for comm
 Steps :<br/>
 1) To train the deformation field generator cGAN to generate the deformation fields.<br/>
 cd train_model/ <br/>
-python tr_deformation_cgan_and_unet.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_g=0.001 <br/>
+python tr_deformation_cgan_and_unet.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_g=0.001 <br/>
 
 2) To train the additive intensity field generator cGAN to generate the intensity fields.<br/>
 cd train_model/ <br/>
-python tr_intensity_cgan_and_unet.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_i=0.001 <br/>
+python tr_intensity_cgan_and_unet.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --ra_en=0 --gan_type=gan --data_aug_seg=1 --ver=0 --en_1hot=1 --lamda_l1_i=0.001 <br/>
 
 3) To use both the trained cGANs to generate augmented images and train the unet.<br/>
 cd train_model/ <br/>
-python tr_unet_with_deformation_intensity_cgans_augmentations.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --data_aug_seg=1 --ra_en=0 --gan_type=gan --lamda_l1_g=0.001 --lamda_l1_i=0.001 --ver=0 --dsc_loss=0 <br/>
+python tr_unet_with_deformation_intensity_cgans_augmentations.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_gen=0.001 --lr_disc=0.001 --data_aug_seg=1 --ra_en=0 --gan_type=gan --lamda_l1_g=0.001 --lamda_l1_i=0.001 --ver=0 --dsc_loss=0 <br/>
 
 To train the baseline with affine transformations for comparison, use the below code file.<br/>
 cd train_model/ <br/>
-python tr_unet_baseline.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0 <br/>
+python tr_unet_baseline.py --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0 <br/>
 
 V) Config files contents.<br/>
 One can modify the contents of the below 2 config files to run the required experiments.<br/>
