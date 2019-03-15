@@ -38,7 +38,8 @@ parser.add_argument('--data_aug', type=int, default=1, choices=[0,1])
 #version of run
 parser.add_argument('--ver', type=int, default=0)
 
-#dsc loss
+# segmentation loss to optimize
+# 0 for weighted cross entropy, 1 for dice score loss
 parser.add_argument('--dsc_loss', type=int, default=0)
 
 parse_config = parser.parse_args()

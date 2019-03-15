@@ -197,6 +197,7 @@ class f1_utilsObj:
         for test_id in test_list:
             test_id_l=[test_id]
 
+            #load image,label pairs and process it to chosen resolution and dimensions
             img_sys,label_sys,pixel_size,affine_tst= orig_img_dt(test_id_l,ret_affine=1)
             cropped_img_sys,cropped_mask_sys = self.dt.preprocess_data(img_sys, label_sys, pixel_size)
 
@@ -206,10 +207,10 @@ class f1_utilsObj:
 
             # Calc dice score and predicted segmentation & store in a txt file
             pred_sf_mask = self.calc_pred_sf_mask(sess, ae, cropped_img_sys, axis_no=2)
-            re_pred_mask_sys,f1_val_es = self.reshape_img_and_f1_score(pred_sf_mask, label_sys, pixel_size)
-            #print("mean f1_val", f1_val_es)
+            re_pred_mask_sys,f1_val = self.reshape_img_and_f1_score(pred_sf_mask, label_sys, pixel_size)
+            #print("mean f1_val", f1_val)
             savefile_name = str(seg_model_dir)+'mean_f1_dice_coeff_test_id_'+str(test_id)+'.txt'
-            np.savetxt(savefile_name, f1_val_es, fmt='%s')
+            np.savetxt(savefile_name, f1_val, fmt='%s')
 
             # Save the segmentation in nrrd files & plot some sample images
             self.plot_predicted_seg_ss(img_sys,label_sys,re_pred_mask_sys,seg_model_dir,test_id)
@@ -219,7 +220,7 @@ class f1_utilsObj:
             pred_filename = str(seg_model_dir)+'pred_seg_id_'+str(test_id)+'.nii.gz'
             nib.save(array_img, pred_filename)
 
-            dsc_tmp_es=np.reshape(f1_val_es[1:self.num_classes], (1, self.num_classes - 1))
+            dsc_tmp=np.reshape(f1_val[1:self.num_classes], (1, self.num_classes - 1))
 
             if(print_assd_hd_scores==1):
                 assd_list=[]
@@ -235,26 +236,26 @@ class f1_utilsObj:
                 np.savetxt(filename_msd,assd_list,fmt='%s')
                 np.savetxt(filename_hd,hd_list,fmt='%s')
 
-                assd_tmp_es=np.reshape(np.asarray(assd_list),(1,self.num_classes-1))
-                hd_tmp_es=np.reshape(np.asarray(hd_list),(1,self.num_classes-1))
+                assd_tmp=np.reshape(np.asarray(assd_list),(1,self.num_classes-1))
+                hd_tmp=np.reshape(np.asarray(hd_list),(1,self.num_classes-1))
 
             if(count==0):
-                dsc_all_es=dsc_tmp_es
+                dsc_all=dsc_tmp
                 if(print_assd_hd_scores==1):
-                    assd_all_es=assd_tmp_es
-                    hd_all_es=hd_tmp_es
+                    assd_all=assd_tmp
+                    hd_all=hd_tmp
                 count=1
             else:
-                dsc_all_es=np.concatenate((dsc_all_es, dsc_tmp_es))
+                dsc_all=np.concatenate((dsc_all, dsc_tmp))
                 if(print_assd_hd_scores==1):
-                    assd_all_es=np.concatenate((assd_all_es, assd_tmp_es))
-                    hd_all_es=np.concatenate((hd_all_es, hd_tmp_es))
+                    assd_all=np.concatenate((assd_all, assd_tmp))
+                    hd_all=np.concatenate((hd_all, hd_tmp))
 
         #for DSC
         val_list=[]
         val_list_mean=[]
         for i in range(0,self.num_classes-1):
-            dsc=dsc_all_es[:,i]
+            dsc=dsc_all[:,i]
             #DSC
             #val_list.append(round(np.mean(dsc), 3))
             val_list.append(round(np.median(dsc), 3))
@@ -280,8 +281,8 @@ class f1_utilsObj:
             hd_val_list_mean=[]
 
             for i in range(0,self.num_classes-1):
-                assd=assd_all_es[:,i]
-                hd=hd_all_es[:,i]
+                assd=assd_all[:,i]
+                hd=hd_all[:,i]
                 #ASSD
                 #val_list.append(round(np.mean(assd), 3))
                 val_list.append(round(np.median(assd), 3))
