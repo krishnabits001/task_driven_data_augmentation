@@ -42,7 +42,7 @@ def augmentation_function(ip_list, dt, labels_present=1, en_1hot=0):
             lbl = np.squeeze(labels[index,...])
 
         do_rotations,do_scaleaug,do_fliplr,do_simple_rot=0,0,0,0
-        #option 5 is to no perform any augmentation i.e, use the original image
+        #option 5 is to not perform any augmentation i.e, use the original image
         aug_select = np.random.randint(5)
 
         if(np.max(img)>0.001):
