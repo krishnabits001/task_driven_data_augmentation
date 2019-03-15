@@ -49,7 +49,7 @@ python tr_unet_with_deformation_intensity_cgans_augmentations.py --dataset=acdc 
 
 To train the baseline with affine transformations for comparison, use the below code file.<br/>
 cd train_model/ <br/>
-python --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0 <br/>
+python tr_unet_baseline.py --dataset=acdc --no_of_tr_imgs=tr1 --comb_tr_imgs=c1 --lr_seg=0.001 --ver=0 <br/>
 
 V) Config files contents.<br/>
 One can modify the contents of the below 2 config files to run the required experiments.<br/>
