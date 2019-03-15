@@ -5,7 +5,7 @@ The method yields competitive segmentation performance with just 1 labelled trai
 https://arxiv.org/abs/1902.05396
 
 Authors:<br/>
-Krishna Chaitanya [mailto](mailto:krishna.chaitanya@vision.ee.ethz.ch),<br/>
+Krishna Chaitanya [email](mailto:krishna.chaitanya@vision.ee.ethz.ch),<br/>
 Christian F. Baumgartner,<br/>
 Neerav Karani.<br/>
 
