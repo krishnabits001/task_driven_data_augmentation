@@ -7,7 +7,8 @@ https://arxiv.org/abs/1902.05396
 **Authors:** <br/>
 Krishna Chaitanya ([email](mailto:krishna.chaitanya@vision.ee.ethz.ch)),<br/>
 Christian F. Baumgartner,<br/>
-Neerav Karani.<br/>
+Neerav Karani,<br/>
+Ender Konukoglu.<br/>
 
 **Requirements:** <br/>
 Python 3.6.0,<br/>
