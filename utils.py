@@ -69,9 +69,9 @@ def augmentation_function(ip_list, dt, labels_present=1, en_1hot=0):
         # RANDOM SCALE
         if do_scaleaug:
             n_x, n_y = img.shape
-            #scale factor between 0.95 and 1.05
-            scale_fact_min=0.95
-            scale_fact_max=1.05
+            #scale factor between 0.9 and 1.1
+            scale_fact_min=0.9
+            scale_fact_max=1.1
             scale_val = round(random.uniform(scale_fact_min,scale_fact_max), 2)
             slice_rescaled = transform.rescale(img, scale_val, order=1, preserve_range=True, mode = 'constant')
             img = dt.crop_or_pad_slice_to_size(slice_rescaled, n_x, n_y)
