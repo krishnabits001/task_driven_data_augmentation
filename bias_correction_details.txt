@@ -1,0 +1,10 @@
+Use N4_th executable file given here to perform the Bias Correction of any input file.
+
+After downloading "N4_th" file, change the file to be executable by: chmod +x N4_th
+The bias correction usage command is:
+./N4_th <input_image_path> <output_image_path> <threshold_value>
+Example, if threshold value is 0.001:
+./N4_th input_image.nii output_image.nii 0.001
+
+For the ACDC dataset, we used the threshold value of 0.001, levels as 4, no. of iterations as 50, and did not use any mask information.
+
