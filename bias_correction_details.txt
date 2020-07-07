@@ -8,3 +8,6 @@ Example, if threshold value is 0.001:
 
 For the ACDC dataset, we used the threshold value of 0.001, levels as 4, no. of iterations as 50, and did not use any mask information.
 
+If you want to alter the above values, you can check the below link with sample code for bias correction:
+https://simpleitk.readthedocs.io/en/master/link_N4BiasFieldCorrection_docs.html
+
