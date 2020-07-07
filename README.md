@@ -28,7 +28,7 @@ pip install tensorflow-gpu=1.8.0 <br/>
 III) Dataset download.<br/>
 To download the acdc, check the website :<br/>
 https://www.creatis.insa-lyon.fr/Challenge/acdc. <br/>
-All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For more details, refer to the "bias_correction_details" file.<br/>
+All the images were bias corrected using N4 algorithm with a threshold value of 0.001. For more details, refer to the "bias_correction_details.txt" file.<br/>
 Image and label pairs are re-sampled (to chosen resolution) and cropped/zero-padded to a fixed size using "create_cropped_imgs_acdc.py" file. <br/>
 
 IV) Train the models.<br/>
