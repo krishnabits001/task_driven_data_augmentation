@@ -1,6 +1,6 @@
 Use N4_th executable file given here to perform the Bias Correction of any input file.
 
-After downloading "N4_th" file, change the file to be executable by: chmod +x N4_th
+After downloading "N4_th" file, change the file to be executable using: chmod +x N4_th
 The bias correction usage command is:
 ./N4_th <input_image_path> <output_bias_corrected_image_path> <threshold_value>
 Example, if threshold value is 0.001:
