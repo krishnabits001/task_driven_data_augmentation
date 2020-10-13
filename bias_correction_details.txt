@@ -11,5 +11,6 @@ output_image.nii --> is the bias corrected image
 
 For the ACDC dataset, we used the threshold value of 0.001, fitting levels as 4, no. of iterations as 50, and did not use any mask information.
 
-If you want to alter the above values like fitting levels, no. of iterations and others, please check the below link with sample code:
+Please check the below link if the executable N4_th does not work on your OS/Linux version where one could do bias correction in python using itk packages.
+Also, you can alter the above values like fitting levels, no. of iterations and others, please check the below link with sample code:
 https://simpleitk.readthedocs.io/en/master/link_N4BiasFieldCorrection_docs.html
