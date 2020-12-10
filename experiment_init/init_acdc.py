@@ -2,7 +2,7 @@
 # Variable definitions required for CNN graph
 ################################################################
 #Interpolation type and up scaling factor
-method_val=0 # 0 - bilinear interpolation; 1- nearest neighbour interpolation
+interp_val=0 # 0 - bilinear interpolation; 1- nearest neighbour interpolation
 ################################################################
 
 ################################################################
