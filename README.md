@@ -1,6 +1,6 @@
 **Semi-Supervised and Task-Driven Data Augmentation** <br/>
 
-The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" which got accepted as an oral presentation at IPMI 2019 (26th international conference on Information Processing in Medical Imaging).
+The code is for the article "Semi-Supervised and Task-Driven Data Augmentation" which got accepted as an Oral presentation at IPMI 2019 (26th international conference on Information Processing in Medical Imaging).
 The method yields competitive segmentation performance with just 1 labelled training volume.<br/>
 https://arxiv.org/abs/1902.05396 <br/>
 https://link.springer.com/chapter/10.1007/978-3-030-20351-1_3 <br/>
