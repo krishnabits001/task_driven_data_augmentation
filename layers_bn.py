@@ -7,9 +7,9 @@ class layersObj:
     #define functions like conv, deconv, upsample, dropout etc inside this class
 
     def __init__(self):
-        #print('init')
+        print('layers init')
         #self.batch_size=20
-        self.batch_size=cfg.batch_size
+        #self.batch_size=cfg.batch_size
 
     def conv2d_layer(self,ip_layer,    # The previous/input layer.
                  name,                 # Name of the conv layer
