@@ -1,6 +1,6 @@
 matplotlib==2.2.0
 nibabel==2.1.0
-numpy==1.14.1
+numpy==1.22.0
 scipy==1.1.0
 sklearn
 skimage
